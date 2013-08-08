@@ -32,7 +32,6 @@ module Omnibus
                       /librt\.so/,
                       /libstdc\+\+\.so/,
                       /libutil\.so/,
-                      /libz\.so\.1/,
                       /linux-vdso.+/,
                       /linux-gate\.so/
                      ]
@@ -122,7 +121,10 @@ module Omnibus
                           /libffi\.dylib/,
                           /libncurses\.5\.4\.dylib/,
                           /libiconv/,
-                          /libstdc\+\+\.6\.dylib/
+                          /libstdc\+\+\.6\.dylib/,
+                          /libxml2\.2\.dylib/,
+                          /libxslt\.1\.dylib/,
+                          /libexslt\.0\.dylib/
                          ]
 
     FREEBSD_WHITELIST_LIBS = [
