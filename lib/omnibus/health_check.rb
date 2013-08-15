@@ -145,8 +145,14 @@ module Omnibus
                               /liblzma\.so\.5/,
                               /libgpg-error\.so\.5/
 =end
+                              /libc\.so\.6/,
+                              /libpthread\.so\.0/,
+                              /librt\.so\.1/,
+                              /libdl\.so\.2/,
+                              /libcrypt\.so\.1/,
+                              /libm\.so\.6/
     ]
-    
+
     def self.log(msg)
       puts "[health_check] #{msg}"
     end
