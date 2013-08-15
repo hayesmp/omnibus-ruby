@@ -135,6 +135,14 @@ module Omnibus
                                /libthr\.so/,
                                /libutil\.so/
                               ]
+    UBUNTU_WHITELIST_LIBS = [
+                              /libexslt\.so\.0/,
+                              /libxslt\.so\.1/,
+                              /libxml2\.so\.2/,
+                              /libgcrypt\.so\.2/,
+                              /liblzma\.so\.5/,
+                              /libgpg-error\.so\.5/
+    ]
 
     def self.log(msg)
       puts "[health_check] #{msg}"
@@ -226,21 +234,23 @@ module Omnibus
       safe = nil
 
       whitelist_libs = case OHAI.platform
-                       when 'arch'
-                         ARCH_WHITELIST_LIBS
-                       when 'mac_os_x'
-                         MAC_WHITELIST_LIBS
-                       when 'solaris2'
-                         SOLARIS_WHITELIST_LIBS
-                       when 'smartos'
-                         SMARTOS_WHITELIST_LIBS
-                       when 'freebsd'
-                         FREEBSD_WHITELIST_LIBS
-                       when 'aix'
-                         AIX_WHITELIST_LIBS
-                       else
-                         WHITELIST_LIBS
-                       end
+                         when 'arch'
+                           ARCH_WHITELIST_LIBS
+                         when 'mac_os_x'
+                           MAC_WHITELIST_LIBS
+                         when 'solaris2'
+                           SOLARIS_WHITELIST_LIBS
+                         when 'smartos'
+                           SMARTOS_WHITELIST_LIBS
+                         when 'freebsd'
+                           FREEBSD_WHITELIST_LIBS
+                         when 'aix'
+                           AIX_WHITELIST_LIBS
+                         when 'ubuntu'
+                           UBUNTU_WHITELIST_LIBS
+                         else
+                           WHITELIST_LIBS
+                         end
       whitelist_libs.each do |reg|
         safe ||= true if reg.match(name)
       end
