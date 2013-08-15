@@ -134,7 +134,9 @@ module Omnibus
                                /librt\.so/,
                                /libthr\.so/,
                                /libutil\.so/
-                              ]
+                           ]
+
+=begin
     UBUNTU_WHITELIST_LIBS = [
                               /libexslt\.so\.0/,
                               /libxslt\.so\.1/,
@@ -143,7 +145,7 @@ module Omnibus
                               /liblzma\.so\.5/,
                               /libgpg-error\.so\.5/
     ]
-
+=end
     def self.log(msg)
       puts "[health_check] #{msg}"
     end
