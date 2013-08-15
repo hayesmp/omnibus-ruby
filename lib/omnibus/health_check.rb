@@ -33,7 +33,8 @@ module Omnibus
                       /libstdc\+\+\.so/,
                       /libutil\.so/,
                       /linux-vdso.+/,
-                      /linux-gate\.so/
+                      /linux-gate\.so/,
+                      /libz\.so.\d/
                      ]
 
     ARCH_WHITELIST_LIBS = [
@@ -46,7 +47,8 @@ module Omnibus
                            /libm\.so/,
                            /libpthread\.so/,
                            /librt\.so/,
-                           /libutil\.so/
+                           /libutil\.so/,
+                           /libz\.so.\d/
                           ]
 
     AIX_WHITELIST_LIBS = [
@@ -57,6 +59,7 @@ module Omnibus
       /libc\.a/,
       /libcrypt\.a/,
       /unix$/,
+      /libz\.so.\d/
     ]
 
     SOLARIS_WHITELIST_LIBS = [
@@ -89,7 +92,8 @@ module Omnibus
                               # solaris 9 libraries:
                               /libm\.so\.1/,
                               /libc_psr\.so\.1/,
-                              /s9_preload\.so\.1/
+                              /s9_preload\.so\.1/,
+                              /libz\.so.\d/
                              ]
 
     SMARTOS_WHITELIST_LIBS = [
@@ -105,7 +109,8 @@ module Omnibus
                               /libc.so/,
                               /libgcc_s.so/,
                               /libstdc\+\+\.so/,
-                              /libcrypt.so/
+                              /libcrypt.so/,
+                              /libz\.so.\d/
                              ]
 
     MAC_WHITELIST_LIBS = [
@@ -124,7 +129,8 @@ module Omnibus
                           /libstdc\+\+\.6\.dylib/,
                           /libxml2\.2\.dylib/,
                           /libxslt\.1\.dylib/,
-                          /libexslt\.0\.dylib/
+                          /libexslt\.0\.dylib/,
+                          /libz\.so.\d/
                          ]
 
     FREEBSD_WHITELIST_LIBS = [
@@ -133,26 +139,9 @@ module Omnibus
                                /libm\.so/,
                                /librt\.so/,
                                /libthr\.so/,
-                               /libutil\.so/
+                               /libutil\.so/,
+                               /libz\.so.\d/
                            ]
-
-    UBUNTU_WHITELIST_LIBS = [
-=begin
-                              /libexslt\.so\.0/,
-                              /libxslt\.so\.1/,
-                              /libxml2\.so\.2/,
-                              /libgcrypt\.so\.2/,
-                              /liblzma\.so\.5/,
-                              /libgpg-error\.so\.5/
-                              /libc\.so\.6/,
-                              /libpthread\.so\.0/,
-                              /librt\.so\.1/,
-                              /libdl\.so\.2/,
-                              /libcrypt\.so\.1/,
-                              /libm\.so\.6/
-=end
-                              /linux-vdso\.so\.1/
-    ]
 
     def self.log(msg)
       puts "[health_check] #{msg}"
@@ -256,8 +245,6 @@ module Omnibus
                            FREEBSD_WHITELIST_LIBS
                          when 'aix'
                            AIX_WHITELIST_LIBS
-                         when 'ubuntu'
-                           UBUNTU_WHITELIST_LIBS
                          else
                            WHITELIST_LIBS
                          end
