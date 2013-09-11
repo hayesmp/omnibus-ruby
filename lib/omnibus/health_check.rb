@@ -130,7 +130,9 @@ module Omnibus
                           /libxml2\.2\.dylib/,
                           /libxslt\.1\.dylib/,
                           /libexslt\.0\.dylib/,
-                          /libz\.so.\d/
+                          /libz\.so.\d/,
+                          /libffi\.5\.dylib/,
+                          /libgcc_s\.1\.dylib/
                          ]
 
     FREEBSD_WHITELIST_LIBS = [
